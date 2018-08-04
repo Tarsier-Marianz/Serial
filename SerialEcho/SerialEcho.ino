@@ -21,6 +21,9 @@ void loop() {
     if (byteRead == '\015') {
       Serial.println();
       Serial.print(">");
+    } else if (byteRead == '\033') {  /* ESCAPE (octal code 033) being press then clear the screen and go to home (it WORKS on windows)*/
+      clearScreenAndHome();
+      Serial.print(">");
     } else {
       /*ECHO the value that was read, back to the serial port. */
       Serial.write(byteRead);
